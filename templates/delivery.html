@@ -1,0 +1,13 @@
+{% extends "delivery_base.html" %}
+
+{% block content %}
+  <h1>Hi {{ partner.name }}</h1>
+  <p>Deliver order #{{ order.id }}: {{ order.item }}</p>
+  <p>Customer: {{ customer.name }}</p>
+
+  <h3>Call customer</h3>
+  <div class="call-options">
+    <a class="call-btn" href="tel:{{ customer.phone }}">📞 Phone</a>
+    <a class="call-btn" href="/call/{{ order.id }}">🌐 NetCall (internet)</a>
+  </div>
+{% endblock %}

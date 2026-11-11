@@ -1,0 +1,20 @@
+{% extends "delivery_base.html" %}
+
+{% block content %}
+  <h1>Delivery dashboard</h1>
+
+  {% for row in rows %}
+    <div class="order-card">
+      <strong>Order #{{ row.order.id }}</strong> — {{ row.order.status }}<br>
+      Items: {{ row.order.item }}<br>
+      Total: ₹{{ row.order.total }}
+      <div class="call-options" style="align-items:center;">
+        <span>Mobile: {{ row.customer.phone }}</span>
+        <a class="call-btn" href="tel:{{ row.customer.phone }}">📞 Phone</a>
+        <a class="call-btn" href="/call/{{ row.order.id }}" target="_blank">🌐 NetCall</a>
+      </div>
+    </div>
+  {% else %}
+    <p>No orders yet.</p>
+  {% endfor %}
+{% endblock %}
